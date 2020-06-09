@@ -2,6 +2,12 @@ package calci;
 
 
 import java.awt.Color;
+import java.awt.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -9,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
-public class mainview {
+class mainview extends JFrame implements ActionListener{
 	static JFrame f; 
 
     static JTextField l; 
@@ -72,6 +78,26 @@ public class mainview {
 	        be = new JButton("."); 
 	  
 	      
+	        bm.addActionListener(c); 
+	        bd.addActionListener(c); 
+	        bs.addActionListener(c); 
+	        ba.addActionListener(c); 
+	        b9.addActionListener(c); 
+	        b8.addActionListener(c); 
+	        b7.addActionListener(c); 
+	        b6.addActionListener(c); 
+	        b5.addActionListener(c); 
+	        b4.addActionListener(c); 
+	        b3.addActionListener(c); 
+	        b2.addActionListener(c); 
+	        b1.addActionListener(c); 
+	        b0.addActionListener(c); 
+	        be.addActionListener(c); 
+	        beq.addActionListener(c); 
+	        beq1.addActionListener(c); 
+	        
+	        
+	        
 	        JPanel p = new JPanel(); 
 	        p.add(l); 
 	        p.add(ba); 
@@ -99,5 +125,59 @@ public class mainview {
 	  
 	        f.setSize(200, 220); 
 	        f.show(); 
+	        
+	       
+				}
+	        	
+	        
+	
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		String s = e.getActionCommand();
+	
+		 if ((s.charAt(0) >= '0' && s.charAt(0) <= '9')) { 
+	          
+	            if (!s1.equals("")) 
+	                s2 = s2 + s; 
+	            else
+	                s0 = s0 + s; 
+	  
+	            l.setText(s0 + s1 + s2); }
+	            else if (s.charAt(0) == '=') {  
+	                double te;
+	                if (s1.equals("*")) 
+	                    te = (Double.parseDouble(s0) * Double.parseDouble(s2)); 
+	                else
+	                    te = (Double.parseDouble(s0) * Double.parseDouble(s2)); 
+	                l.setText(s0 + s1 + s2 + "=" + te); 
+	                s0 = Double.toString(te); 
+	                s1 = s2 = ""; }
+	                else { 
+	                    if (s1.equals("") || s2.equals("")) 
+	                        s1 = s; 
+	                    else { 
+	                        double te; 
+	                        if (s1.equals("*")) 
+	                            te = (Double.parseDouble(s0) * Double.parseDouble(s2)); 
+	                        else 
+	                        	 te = (Double.parseDouble(s0) * Double.parseDouble(s2)); 
+	                        s0 = Double.toString(te); 
+	                        s1 = s; 
+	                        s2 = ""; 
+	                    } 
+		 tanmay t=new tanmay();
+		 t.multiply();
+			 }
+		
+		
+	}
+	public static void lists(String s) {
+		java.util.List<String> someList = new ArrayList<String>();
+		someList.addAll(Arrays.asList(s));
+		 System.out.println(someList);
+		
 	}
 }
